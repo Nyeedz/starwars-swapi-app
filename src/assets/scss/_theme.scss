@@ -1,0 +1,82 @@
+@import "~@angular/material/theming";
+@include mat-core();
+$primary: (
+  50: #f8fcfc,
+  100: #f3f7f7,
+  200: #eef2f2,
+  300: #e2e6e6,
+  400: #c0c4c4,
+  500: #a1a5a5,
+  600: #787c7c,
+  700: #646767,
+  800: #454848,
+  900: #232626,
+  A100: #8c9eff,
+  A200: #536dfe,
+  A400: #3d5afe,
+  A700: #304ffe,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$accent: (
+  50: #ffffe6,
+  100: #fcfdc0,
+  200: #f9fa93,
+  300: #f5f662,
+  400: #f0f234,
+  500: #ffff00,
+  600: #ffeb00,
+  700: #ffd100,
+  800: #ffb700,
+  900: #ff8a00,
+  A100: #ffff00,
+  A200: #ffff00,
+  A400: #ffff00,
+  A700: #ffff00,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$starwars-app-primary: mat-palette($primary);
+$starwars-app-accent: mat-palette($accent, A200, A100, A400);
+$starwars-app-warn: mat-palette($mat-red);
+
+$starwars-app-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $starwars-app-primary,
+      accent: $starwars-app-accent,
+      warn: $starwars-app-warn,
+    ),
+  )
+);
+@include angular-material-theme($starwars-app-theme);

@@ -1,0 +1,162 @@
+@import "../../../assets/scss/theme";
+
+:host {
+  height: 100%;
+}
+
+.login-container,
+:host {
+  display: grid;
+  place-items: center;
+}
+
+.box {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+.yoda {
+  position: absolute;
+  z-index: 15;
+}
+.circle {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 3;
+  position: absolute;
+  animation: fade 6s infinite linear;
+}
+
+.first {
+  width: 75%;
+  height: 75%;
+}
+
+.second {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes spin-letters {
+  0%,
+  10% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  70%,
+  86% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  95%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes move-byline {
+  0% {
+    transform: translateZ(5em);
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
+@keyframes spin-letters {
+  0%,
+  10% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  70%,
+  86% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  95%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes move-byline {
+  0% {
+    transform: translateZ(5em);
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
+.starwars-logo {
+  height: 5em;
+  left: 10%;
+  position: absolute;
+  top: 12%;
+  transform: translate(-50%, -50%);
+  width: 10em;
+  img {
+    width: 100%;
+  }
+}
+
+.star,
+.wars,
+.byline {
+  position: absolute;
+}
+
+.star {
+  top: -0.75em;
+  animation: star 10s ease-out infinite;
+}
+
+.wars {
+  bottom: -0.5em;
+  animation: wars 10s ease-out infinite;
+}
+
+.byline {
+  color: #fff;
+  font-family: "ITC Serif Gothic", Lato;
+  font-size: 1em;
+  left: -2em;
+  letter-spacing: 0.4em;
+  right: -2em;
+  text-align: center;
+  text-transform: uppercase;
+  top: 29%;
+  animation: move-byline 10s linear infinite;
+  span {
+    animation: spin-letters 10s linear infinite;
+    display: inline-block;
+  }
+}
+
+/*** Media queries for adjusting to different screen sizes ***/
+@media only screen and (max-width: 600px) {
+  .box {
+    margin-top: 4rem;
+  }
+  .login-container {
+    left: 50%;
+    top: 90%;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .login-container {
+    font-size: 10px;
+  }
+}

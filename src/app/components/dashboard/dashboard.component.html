@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over">
+    <img
+      src="assets/images/starwars-logo.png"
+      class="sidenav-logo"
+      alt="Star Wars Logo"
+      [routerLink]="['/character']"
+    />
+    <ul class="sidenav-actions">
+      <li [routerLink]="['/characters']">Personagens</li>
+      <!-- <li [routerLink]="['/starships']">Naves espaciais</li>
+      <li [routerLink]="['/species']">Espécies</li> -->
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <sword-burger (action)="sidenav.toggle()"></sword-burger>
+
+    <div class="sidenav-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

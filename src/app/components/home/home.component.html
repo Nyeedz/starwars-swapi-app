@@ -1,0 +1,46 @@
+<div class="home-actions">
+  <form class="search-movie" [formGroup]="searchForm" (submit)="search()">
+    <mat-form-field>
+      <mat-placeholder>Procurar filme</mat-placeholder>
+      <input matInput formControlName="search" type="search" />
+      <button mat-button matSuffix mat-stroked-button aria-label="search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  <div class="add-movie">
+    <button
+      mat-button
+      mat-flat-button
+      aria-label="add"
+      (click)="openCreateMovieModal()"
+    >
+      Adicionar filme
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="movies-section">
+  <div class="movies-header">
+    <a [class.active]="activeTab === 1" (click)="activeTab = 1">
+      Filmes oficiais
+    </a>
+    <a [class.active]="activeTab === 2" (click)="activeTab = 2">
+      Filmes adicionados
+    </a>
+  </div>
+  <div class="movies-card-wrapper" *ngIf="activeTab === 1">
+    <movie-card
+      *ngFor="let movie of movies$ | async"
+      [movie]="movie"
+    ></movie-card>
+  </div>
+  <div class="movies-card-wrapper" *ngIf="activeTab === 2">
+    <movie-card
+      *ngFor="let addedMovie of AddedMovies$ | async; let i = index"
+      [movie]="addedMovie"
+      [index]="i"
+    ></movie-card>
+  </div>
+</div>

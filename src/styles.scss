@@ -1,0 +1,39 @@
+@import "./assets/scss/theme";
+
+@font-face {
+  font-family: Starjedi;
+  src: url("/assets/fonts/Starjedi.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Starjhol;
+  src: url("/assets//fonts/Starjhol.ttf") format("truetype");
+}
+
+$primary-color: #f8fcfc;
+
+:root {
+  --text-yellow-color: rgb(255, 232, 31);
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.mat-form-field {
+  color: $primary-color;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, 0.6);
+}

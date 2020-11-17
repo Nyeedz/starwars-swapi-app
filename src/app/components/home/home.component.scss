@@ -1,0 +1,48 @@
+:host {
+  width: 100%;
+}
+
+.home-actions {
+  display: flex;
+  justify-content: space-between;
+
+  .search-movie {
+    mat-form-field.mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+.movies-section {
+  margin-top: 2rem;
+
+  .movies-header {
+    display: flex;
+    align-items: center;
+
+    a {
+      font-family: "Starjhol";
+      font-size: 1.5rem;
+      color: #f8fcfc;
+      transition: color 0.2s linear;
+      user-select: none;
+      text-decoration: none;
+
+      & + a {
+        margin-left: 1.5rem;
+      }
+
+      &:hover,
+      &.active {
+        color: yellow;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .movies-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 0;
+  }
+}

@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>Adicionar filme</h1>
+
+<mat-dialog-content>
+  <form [formGroup]="movieForm" (submit)="createMovie()">
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+      <input matInput placeholder="Title" required formControlName="title" />
+      <mat-hint *ngIf="movieForm.invalid && isInvalid"
+        >Título é obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Diretor</mat-label>
+      <input
+        matInput
+        placeholder="Diretor"
+        required
+        formControlName="director"
+      />
+      <mat-hint *ngIf="movieForm.invalid && isInvalid"
+        >Diretor é obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Produtor</mat-label>
+      <input
+        matInput
+        placeholder="Produtor"
+        required
+        formControlName="producer"
+      />
+      <mat-hint *ngIf="movieForm.invalid && isInvalid"
+        >Produtor é obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Personagens</mat-label>
+      <mat-select formControlName="characters" multiple #characterSelect>
+        <mat-option
+          *ngFor="let character of characters$ | async"
+          [value]="character.url"
+          >{{ character.name }}</mat-option
+        >
+      </mat-select>
+      <mat-hint *ngIf="movieForm.invalid && isInvalid"
+        >Personagens é obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>cover</mat-label>
+      <input matInput placeholder="cover" formControlName="cover" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-button 
+    cdkFocusInitial
+    (click)="createMovie()"
+  >
+    Criar
+  </button>
+</mat-dialog-actions>
