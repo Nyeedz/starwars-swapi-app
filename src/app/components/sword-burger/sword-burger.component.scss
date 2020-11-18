@@ -1,92 +1,83 @@
-#burger {
-  cursor: pointer;
-  opacity: 0;
-  animation: fadein 0.2s ease 1s forwards;
-  overflow: hidden;
+$handle-gap: 2.5px;
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50px;
+  height: 30px;
   position: relative;
-  width: 70px;
-  height: 60px;
-  %burgersection {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    height: 10%;
-    width: 70%;
-    transform-origin: 50% 50%;
-    transition: top 0.4s ease 0.4s, transform 0.4s ease 0.4s;
-    &:before,
-    &:after {
-      content: "";
-      display: block;
-      height: 40%;
-      background: white;
-      position: absolute;
-      top: 50%;
-      transform: translate(0%, -45%);
-      transition: background 0.2s ease, box-shadow 0.2s ease;
-    }
-    &:before {
-      left: 0;
-      width: calc(-1px + 75%);
-      border-radius: 10px 0px 0px 10px;
-    }
-    &:after {
-      right: 0;
-      width: calc(-1px + 25%);
-    }
-  }
 
   &:hover {
-    .bun {
-      &.top:before {
-        background: #fee;
-        box-shadow: #f00 0px 0px 10px 1px;
+    cursor: pointer;
+
+    .saber {
+      &:nth-child(1) {
+        .light {
+          background: #fee;
+          box-shadow: #f00 0px 0px 10px 1px;
+        }
       }
-      &.bottom:before {
-        background: #dff;
-        box-shadow: #0ff 0px 0px 10px 1px;
+  
+      &:nth-child(2) {
+        .light {
+          background: #efe;
+          box-shadow: #0f0 0px 0px 10px 1px;
+        }
       }
-    }
-    .filling {
-      &:before {
-        background: #efe;
-        box-shadow: #0f0 0px 0px 10px 1px;
+  
+      &:nth-child(3) {
+        .light {
+          background-color: #dff;
+          box-shadow: #0ff 0px 0px 10px 1px;
+        }
       }
     }
   }
 
-  .bun {
-    @extend %burgersection;
-    &.top {
-      top: 25%;
-    }
-    &.bottom {
-      top: 75%;
-    }
-  }
-  .filling {
-    @extend %burgersection;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(180deg);
-    animation: green-ls-out 0.8s ease forwards;
-  }
+  .saber {
+    width: 100%;
+    display: flex;
 
-  &.active {
-    .bun {
-      border-radius: 3px;
-      top: 50%;
-      transition: top 0.4s ease, transform 0.4s ease;
-      &.top {
-        transform: translate(-50%, -50%) rotate(-225deg);
+    &:nth-child(odd) {
+      .handle {
+        margin-right: $handle-gap;
+        border-radius:10px 0px 0px 10px;
+        border-right: 2px solid grey;
       }
-      &.bottom {
-        transform: translate(-50%, -50%) rotate(405deg);
+
+      .light {
+        border-radius:0px 10px 10px 0px;
       }
     }
-    .filling {
-      transform: translate(-50%, -50%) rotate(-90deg);
-      animation: green-ls-in 0.8s ease forwards;
+
+    &:nth-child(even) {
+      .handle {
+        margin-left: $handle-gap;
+        border-radius:0px 10px 10px 0px;
+        border-left: 2px solid grey;
+      }
+
+      .light {
+        border-radius:10px 0px 0px 10px;
+      }
+    }
+
+    .handle,
+    .light {
+      height: 5px;
+    }
+
+    .light {
+      width: calc(100% - #{$handle-gap});
+      transition: background 0.2s ease, box-shadow 0.2s ease;      
+      background: white;
+    }
+
+    .handle {
+      width: 20%;
+      
+      background: rgb(185, 185, 185);
     }
   }
 }

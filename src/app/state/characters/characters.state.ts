@@ -20,13 +20,13 @@ export default class CharactersState {
   @Action(GetCharacters)
   async loadPeople(
     ctx: StateContext<CharactersStateModel>,
-    { page }: GetCharacters
+    { page, table }: GetCharacters
   ) {
     const charactersResponse: CharactersResponse = await this.swapiService
       .getCharacters(page)
       .toPromise(); 
     
-    let characters = [...(page === 1 ? [] : ctx.getState().all), ...charactersResponse.results]
+    let characters = [...(page === 1 || table ? [] : ctx.getState().all), ...charactersResponse.results]
 
     return ctx.patchState({ all: characters, count: charactersResponse.count });
   }

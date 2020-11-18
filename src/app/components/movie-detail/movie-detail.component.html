@@ -1,0 +1,22 @@
+<mat-dialog-content>
+  <div class="movie-modal-container">
+    <div class="movie-media">
+      <img class="cover" [src]="movie.cover" />
+    </div>
+
+    <div class="movie-description">
+      <p>Lançamento: {{ movie.release_date | date: "longDate" }}</p>
+      <h1>{{ movie.title }}</h1>
+      <h2>Episode {{ movie.episode_id | numberToRoman }}</h2>
+      <p class="director">{{ movie.director }}</p>
+      <p class="producer">{{ movie.producer }}</p>
+      <div class="opening-crawl" *ngIf="movie.opening_crawl">
+        <p>{{ movie.opening_crawl }}</p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close aria-label="Fechar modal de detalhes">Fechar</button>
+</mat-dialog-actions>

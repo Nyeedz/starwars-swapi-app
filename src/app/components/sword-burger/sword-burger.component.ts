@@ -1,22 +1,39 @@
-import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ViewChild,
+  AfterViewInit,
+  ElementRef
+} from '@angular/core';
 import { Movie } from '@models';
 
 @Component({
   selector: 'sword-burger',
   template: `
-    <div id="burger">
-      <div class="bun top"></div>
-      <div class="filling"></div>
-      <div class="bun bottom"></div>
+    <div class="burger" #burger>
+      <div class="saber top">
+        <div class="handle"></div>
+        <div class="light"></div>
+      </div>
+      <div class="saber middle">
+        <div class="light"></div>
+        <div class="handle"></div>
+      </div>
+      <div class="saber bottom">
+        <div class="handle"></div>
+        <div class="light"></div>
+      </div>
     </div>
   `,
   styleUrls: ['./sword-burger.component.scss'],
 })
-export class SwordBurgerComponent {
+export class SwordBurgerComponent implements AfterViewInit {
   @Output() action: EventEmitter<null> = new EventEmitter();
+  @ViewChild('burger') burger: ElementRef;
 
-  @HostListener('click', ['$event'])
-  onClick($event: any) {
-    this.action.emit();
+  ngAfterViewInit() {
+    this.burger.nativeElement.addEventListener('click', event => this.action.emit());
+    
   }
 }

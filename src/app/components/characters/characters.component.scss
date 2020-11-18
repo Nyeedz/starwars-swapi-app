@@ -1,0 +1,128 @@
+.characters-header {
+  margin: 2rem 0 1.5rem 0;
+
+  h4 {
+    font-family: "Starjhol";
+    font-size: 1.5rem;
+    color: yellow;
+    user-select: none;
+    text-decoration: none;
+  }
+}
+
+.table-wrapper {
+  position: relative;
+
+  .loading-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .orbit {
+      border: 1px solid grey;
+      border-radius: 50%;
+      width: 20em;
+      height: 20em;
+      animation: spin-right 10s linear infinite;
+
+      .planet {
+        width: 1em;
+        height: 1em;
+        background-color: yellow;
+        border-radius: 50%;
+        position: relative;
+        left: 50%;
+        top: -0.5rem;
+      }      
+    }
+  }
+
+  .table-container {
+    position: relative;
+    overflow: auto;
+    min-height: 547px;
+
+    table {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes spin-right {
+  100% { transform: rotate(-360deg); }
+}
+
+@media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+  
+  .mat-table .mat-header-cell {    
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+  /*
+  .mat-table .mat-row:nth-child(even) {background: #CCC}
+  .mat-table .mat-row:nth-child(odd) {background: #FFF}
+  */
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #383838;
+    display: block;
+    text-align: right;
+    padding-right: 1em;
+    height:30px;
+    margin-bottom: 4%;
+    padding-left: 1em;
+  }
+
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+    
+    font-size: .85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+    .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+    padding-left: 1em;
+  }
+
+  mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    border-color: #383838 !important;
+  }
+
+  mat-row::after, mat-header-row::after, mat-footer-row::after {
+    display: none;
+  }
+}

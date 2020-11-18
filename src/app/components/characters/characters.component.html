@@ -1,0 +1,80 @@
+<div class="characters-header">
+  <h4>Personagens</h4>
+</div>
+
+<div class="table-wrapper">
+  <div class="loading-wrapper" *ngIf="isLoading">
+    <div class="orbit">
+      <div class="planet"></div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <mat-table
+      [dataSource]="dataSource"
+      matSort
+      matSortActive="created"
+      matSortDisableClear
+      matSortDirection="desc"
+    >
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Nome">{{
+          row.name
+        }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="height">
+        <mat-header-cell *matHeaderCellDef>Altura</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Altura"
+          >{{ row.height / 100 }} cm</mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="mass">
+        <mat-header-cell *matHeaderCellDef>Peso</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Peso"
+          >{{ row.mass }} kg</mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="birth_year">
+        <mat-header-cell *matHeaderCellDef>Data de nascimento</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Data de nascimento">{{
+          row.birth_year | unknownToQuestionMark
+        }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef>Gênero</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Gênero">{{
+          row.gender | unknownToQuestionMark
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Created Column -->
+      <ng-container matColumnDef="homeworld" data-label="Planeta natal">
+        <mat-header-cell *matHeaderCellDef> Planeta </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button
+            mat-button
+            aria-label="Ver planeta"
+            (click)="openPlanetModal(row.homeworld)"
+          >
+            Ver planeta
+            <mat-icon>launch</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+
+  <mat-paginator
+    [length]="resultsLength"
+    [pageSize]="10"
+    (page)="onPaginate($event)"
+  ></mat-paginator>
+</div>

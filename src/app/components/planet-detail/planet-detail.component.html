@@ -1,0 +1,39 @@
+<mat-dialog-content *ngIf="planet$ | async as planet">
+  <h1>{{ planet.name }}</h1>
+  <div class="planet-info">
+    <div class="item" #tooltip="matTooltip" matTooltip="Período de rotação">
+      <img src="assets/icons/clock.png" alt="" class="icon">
+      {{ planet.rotation_period | unknownToQuestionMark }} hora
+    </div>
+    <div class="item orbit" #tooltip="matTooltip" matTooltip="Período de translação">
+      <img src="assets/icons/circle.png" alt="" class="icon">
+      {{ planet.orbital_period | unknownToQuestionMark }} dias
+    </div>
+    <div class="item gravity" #tooltip="matTooltip" matTooltip="Gravidade">
+    <img src="assets/icons/apple.png" alt="" class="icon">
+      {{ planet.gravity | unknownToQuestionMark }} G
+    </div>
+    <div class="item" #tooltip="matTooltip" matTooltip="População">
+      <img src="assets/icons/group.png" alt="" class="icon">
+      {{ planet.population | unknownToQuestionMark | abbreviateNumber }}
+    </div>
+    <div class="item weather" #tooltip="matTooltip" matTooltip="Clima">
+      <img src="assets/icons/fog.png" alt="" class="icon">
+      {{ planet.climate | unknownToQuestionMark }}
+    </div>
+    <div class="item terrain" #tooltip="matTooltip" matTooltip="Terreno">
+      <img src="assets/icons/mountain.png" alt="" class="icon">
+      {{ planet.terrain | unknownToQuestionMark }}
+    </div>
+  </div>
+  -
+  <img
+    class="planet-image"
+    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png"
+    alt=""
+  />
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

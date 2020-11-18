@@ -1,0 +1,303 @@
+// .movie-modal {
+//   height: 100%;
+//   width: 100%;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: row;
+//   overflow: hidden;
+
+// @media screen and (max-width: 850px) {
+//   flex-direction: column;
+// }
+
+//   .close-button {
+//     position: absolute;
+//     top: 10px;
+//     right: 10px;
+//     color: white;
+//     cursor: pointer;
+//   }
+
+//   .movie-media {
+//     display: inline-flex;
+//     flex: 1;
+//     flex-direction: column;
+//     align-items: center;
+
+//     @media screen and (max-width: 850px) {
+//       display: none;
+//     }
+
+//     .cover {
+//       width: 305px;
+//       height: 500px;
+//     }
+//   }
+//   .opening-crawl {
+//     margin-top: 1rem;
+//     p {
+//       padding: 7px 0 0 10px;
+//       width: 510px;
+//       height: 150px;
+//       overflow: auto;
+//       background: rgba(255, 255, 255, 0.3);
+//       color: white;
+//       border-radius: 10px;
+
+//       /* width */
+//       &::-webkit-scrollbar {
+//         width: 10px;
+//         background: transparent;
+//       }
+
+//       /* Track */
+//       &::-webkit-scrollbar-track {
+//         background: transparent;
+//       }
+
+//       /* Handle */
+//       &::-webkit-scrollbar-thumb {
+//         border-radius: 15px;
+//         background: rgba(255, 255, 0, 0.4);
+//       }
+
+//       /* Handle on hover */
+//       &::-webkit-scrollbar-thumb:hover {
+//         background: yellow;
+//       }
+//     }
+//   }
+
+//   .movie-description {
+//     flex: 1;
+
+//     p {
+//       color: whitesmoke;
+
+//       &.director {
+//         font-weight: bold;
+//         margin-bottom: 0.2rem;
+//       }
+
+//       &.producer {
+//         font-style: italic;
+//         margin-bottom: 0.5rem;
+//       }
+//     }
+
+// h1 {
+//   color: yellow;
+//   font-size: 3em;
+//   @media screen and (max-width: 850px) {
+//     font-size: 1.5em;
+//   }
+//   font-family: Starjedi;
+//   word-break: break-all;
+// }
+
+// h2 {
+//   color: whitesmoke;
+//   font-size: 1.3em;
+//   font-family: Starjedi;
+//   margin-bottom: 1em;
+//   word-break: break-all;
+// }
+
+//     .button-group {
+//       display: flex;
+//       padding-left: 1em;
+//       padding-right: 1em;
+//       margin-top: 2em;
+
+//       @media screen and (max-width: 850px) {
+//         flex-wrap: wrap;
+//       }
+
+//       button {
+//         flex: 1;
+//         background: white;
+//         border: none;
+//         color: #6f6f6f;
+//         font-weight: bold;
+//         font-size: 14px;
+
+//         &:first-of-type {
+//           border-top-left-radius: 15px;
+//           border-bottom-left-radius: 15px;
+
+//           @media screen and (max-width: 850px) {
+//             border-radius: 0;
+//           }
+//         }
+
+//         &:last-of-type {
+//           border-top-right-radius: 15px;
+//           border-bottom-right-radius: 15px;
+
+//           @media screen and (max-width: 850px) {
+//             border-radius: 0;
+//           }
+//         }
+
+//         &.active {
+//           background: black;
+//           color: yellow;
+//         }
+
+//         &:focus {
+//           outline: none;
+//         }
+//       }
+//     }
+
+//     .array-info {
+//       height: 300px;
+//       overflow: auto;
+//       margin-left: 1em;
+//       margin-right: 1em;
+//       border-radius: 15px;
+//       margin-top: 1.5em;
+//       color: white;
+
+//       @media screen and (max-width: 850px) {
+//         height: 200px;
+//       }
+
+//       &::-webkit-scrollbar {
+//         width: 10px;
+//         background: rgba(255, 255, 255, 0.3);
+//       }
+
+//       /* Track */
+//       &::-webkit-scrollbar-track {
+//         background: transparent;
+//       }
+
+//       /* Handle */
+//       &::-webkit-scrollbar-thumb {
+//         border-radius: 15px;
+//         background: rgba(255, 255, 255, 0.3);
+//       }
+
+//       /* Handle on hover */
+//       &::-webkit-scrollbar-thumb:hover {
+//         background: yellow;
+//       }
+
+//       div {
+//         background: rgba(255, 255, 255, 0.3);
+//         font-weight: bold;
+
+//         &:hover {
+//           background: white;
+//           color: black;
+//         }
+//       }
+//     }
+//   }
+// }
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.movie-modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+  }
+}
+
+.movie-media {
+  display: flex;
+  align-items: center;
+  img {
+    width: 305px;
+    height: 500px;
+  }
+}
+
+.movie-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (max-width: 850px) {
+    p:first-of-type {
+      margin-top: 1rem;
+    }
+  }
+  h1 {
+    color: yellow;
+    font-size: 3em;
+    @media screen and (max-width: 850px) {
+      font-size: 1.5em;
+    }
+    font-family: Starjedi;
+    word-break: break-all;
+  }
+
+  h2 {
+    color: whitesmoke;
+    font-size: 1.3em;
+    font-family: Starjedi;
+    margin-bottom: 1em;
+    word-break: break-all;
+  }
+
+  p {
+    color: whitesmoke;
+    &.director {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+    }
+    &.producer {
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .opening-crawl {
+    margin: 1rem 0px 0px 20px;
+    padding: 5px 0px 0px 10px;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    text-align: center;
+
+    @media screen and (max-width: 850px) {
+      margin: 0px 0px 1rem 0px;
+      padding: 0px 0px 0px 5px;
+    }
+
+    p {
+      height: 150px;
+    }
+    /* width */
+    &::-webkit-scrollbar {
+      width: 10px;
+      background: transparent;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      border-radius: 15px;
+      background: rgba(255, 255, 0, 0.4);
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: yellow;
+    }
+  }
+}

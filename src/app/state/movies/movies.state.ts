@@ -9,6 +9,7 @@ import {
   Store,
 } from '@ngxs/store';
 import { SwapiService } from '@services';
+import { AuthState } from '../auth/auth.state';
 import {
   CreateMovie,
   DeleteMovie,
@@ -19,7 +20,7 @@ import {
 
 @State<MoviesStateModel>({
   name: 'movies',
-  defaults: { watched: [], all: [], added: [] },
+  defaults: { watched: [], all: [], added: {} },
 })
 @Injectable()
 export default class MoviesState {
@@ -63,43 +64,53 @@ export default class MoviesState {
   addMovie(ctx: StateContext<any>, { movie }: CreateMovie) {
     const state = ctx.getState();
     const user = this.store.selectSnapshot((state) => state.auth.username);
+    let addedMovies = { ...state.added };
 
-    // let userMovies = state.added.find(
-    //   (addedMovies) => addedMovies.username === user
-    // );
-
-    let addedMovies: Partial<Movie>[] = [...state.added];
-
-    added.push({
+    movie = {
       ...movie,
       cover:
         movie?.cover ||
         'https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9416292&qld=90&l=430&a=-1=1006378633',
-    });
+    };
 
-    ctx.patchState({ added });
+    if (!addedMovies[user]) {
+      addedMovies[user] = [movie];
+    } else {
+      addedMovies[user] = [...addedMovies[user], movie];
+    }
+
+    ctx.patchState({ added: addedMovies });
   }
 
   @Action(EditMovie)
   editMovie(ctx: StateContext<MoviesStateModel>, { movie, index }: EditMovie) {
-    const state = ctx.getState();
+    const user = this.store.selectSnapshot((state) => state.auth.username);
 
-    // let added: Partial<Movie>[] = [...state.added];
+    let addedMovies = { ...ctx.getState().added };
+    let userMovies = [...addedMovies[user]];
 
-    // added[index] = { ...added[index], ...movie };
+    userMovies[index] = { ...userMovies[index], ...movie };
 
-    // ctx.patchState({ added });
+    addedMovies[user] = userMovies;
+
+    ctx.patchState({ added: addedMovies });
   }
 
   @Action(DeleteMovie)
   deleteMovie(ctx: StateContext<MoviesStateModel>, { index }: EditMovie) {
     const state = ctx.getState();
+    const user = this.store.selectSnapshot((state) => state.auth.username);
+    let addedMovies = { ...ctx.getState().added };
 
-    // const added: Partial<Movie>[] = state.added.filter(
-    //   (movie: Movie, i) => i !== index
-    // );
+    if (!state.added[user]) {
+      return;
+    }
 
-    // ctx.patchState({ added });
+    addedMovies[user] = addedMovies[user].filter(
+      (movie: Movie, i) => i !== index
+    );
+
+    ctx.patchState({ added: addedMovies });
   }
 
   @Selector()
@@ -107,9 +118,12 @@ export default class MoviesState {
     return state.all;
   }
 
-  @Selector()
-  static getAddedMovies(state: MoviesStateModel): Partial<Movie>[] {
-    // return state.added.movies;
+  @Selector([AuthState.getUser])
+  static getAddedMovies(
+    state: MoviesStateModel,
+    username: string
+  ): Partial<Movie>[] {
+    return state.added[username] || [];
   }
 
   static IsMovieWatched(
@@ -124,10 +138,5 @@ export default class MoviesState {
 export interface MoviesStateModel {
   watched: number[];
   all: Movie[];
-  added: AddedMovies[];
-}
-
-interface AddedMovies {
-  username: string
-  movies: Partial<Movie>[];
+  added: { [key: string]: Partial<Movie>[] };
 }

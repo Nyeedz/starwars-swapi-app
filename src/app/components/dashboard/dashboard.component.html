@@ -7,9 +7,8 @@
       [routerLink]="['/character']"
     />
     <ul class="sidenav-actions">
-      <li [routerLink]="['/characters']">Personagens</li>
-      <!-- <li [routerLink]="['/starships']">Naves espaciais</li>
-      <li [routerLink]="['/species']">Espécies</li> -->
+      <li *ngFor="let route of routes;" [routerLink]="[route.url]" [class.active]="route.url === currentRoute">{{route.title}}</li>
+      <li (click)="logout()">Logout</li>
     </ul>
   </mat-sidenav>
 

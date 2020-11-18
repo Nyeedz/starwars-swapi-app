@@ -6,14 +6,25 @@
   <h2 class="movie-card-header">{{ movie.title }}</h2>
   <div class="movie-card-options">
     <button
+      *ngIf="index === undefined"
       mat-icon-button
       aria-label="Marcar filme como assistido"
       color="primary"
       (click)="toggleWatched(movie.episode_id)"
     >
       <mat-icon>{{
-        (watched$ | async) ? "visibility" : "visibility_off"
+        (watched$ | async) ? "visibility_off" : "visibility"
       }}</mat-icon>
+    </button>
+
+    <button
+      *ngIf="index + 1"
+      mat-icon-button
+      aria-label="Deletar filme"
+      color="primary"
+      (click)="editMovie(movie, index)"
+    >
+      <mat-icon>edit</mat-icon>
     </button>
 
     <button
@@ -25,30 +36,20 @@
     >
       <mat-icon>delete</mat-icon>
     </button>
-    <!--
-    <fa-icon
-      *ngIf="customMovies.includes(movie.url)"
-      [icon]="faEdit"
-      tooltip="Editar filme"
-      class="ml-2"
-      container="left"
-      (click)="editMovie(movie, i)"
-    ></fa-icon>
-    <fa-icon
-      *ngIf="customMovies.includes(movie.url)"
-      class="ml-2"
-      [icon]="faTrash"
-      tooltip="Excluir filme"
-      container="left"
-      (click)="deleteMovie(i)"
-    ></fa-icon> -->
   </div>
-  <p>Episódio {{ movie.episode_id ? movie.episode_id : index + 1 }}</p>
+  <p>
+    Episódio
+    {{
+      (movie.episode_id ? movie.episode_id : index + 1)
+        | numberToRoman
+        | uppercase
+    }}
+  </p>
   <button
     mat-stroked-button
     color="primary"
     aria-label="Detalhes do filme"
-    (click)="(null)"
+    (click)="movieDetails(movie)"
   >
     Detalhes
     <mat-icon>arrow_right_alt</mat-icon>

@@ -13,6 +13,11 @@
     width: 200px;
     text-decoration: none;
   }
+  .logout {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 40px;
+  }
 }
 
 .mat-drawer {
@@ -33,16 +38,19 @@
     text-align: center;
     line-height: 40px;
     font-family: Starjedi;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
     user-select: none;
 
     a {
       text-decoration: none;
       color: white;
     }
-  
-    &:hover {
+
+    &.active, &:hover {
       color: yellow;
+    }
+
+    &:hover {
       background: rgba(255, 255, 255, 0.2);
       opacity: 0.9;
     }
@@ -54,7 +62,8 @@
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto;  
+  padding-top: 15px;
 
   @media (min-width: 576px) {
     max-width: 540px;

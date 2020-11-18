@@ -1,0 +1,22 @@
+{
+  "create": {
+    "characters": [
+      "http://swapi.dev/api/people/1/",
+      "http://swapi.dev/api/people/2/",
+      "http://swapi.dev/api/people/3/"
+    ],
+    "title": "Teste de integraçao",
+    "director": "Diretor teste",
+    "producer": "Produtor teste",
+    "cover": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9416292&qld=90&l=430&a=-1=1006378633",
+    "opening_crawl": "Teste de integração para adicionar este filme"
+  },
+  "edited": {
+    "characters": ["http://swapi.dev/api/people/1/"],
+    "title": "Teste de integraçao editado",
+    "director": "Diretor teste editado",
+    "producer": "Produtor teste editado",
+    "cover": null,
+    "opening_crawl": "Teste de integração para editar este filme"
+  }
+}

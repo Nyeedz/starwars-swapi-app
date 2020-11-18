@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CharactersResponse, MoviesResponse } from '@models';
+import { CharactersResponse, MoviesResponse, Planet } from '@models';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -17,6 +17,12 @@ export class SwapiService {
   public getCharacters(page: number): Observable<CharactersResponse> {
     return this.http.get<CharactersResponse>(
       `${environment.swapiUrl}/people?page=${page}`
+    );
+  }
+
+  public getPlanet(id: number): Observable<Planet> {
+    return this.http.get<Planet>(
+      `${environment.swapiUrl}/planets/${id}`
     );
   }
 }
