@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
-  Router,
-  CanActivate,
   ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
   RouterStateSnapshot,
 } from '@angular/router';
 import { Store } from '@ngxs/store';

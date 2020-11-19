@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Store } from '@ngxs/store';
 import { Logout } from 'src/app/state/auth/auth.actions';
 
 @Component({
@@ -12,12 +12,12 @@ import { Logout } from 'src/app/state/auth/auth.actions';
 })
 export class DashboardComponent {
   navbarOpen: boolean = true;
-  routeSubscription: Subscription ;
+  routeSubscription: Subscription;
   currentRoute = '/movies';
   routes = [
-    { title: 'Filmes', url: '/movies'},
-    { title: 'Personagens', url: '/characters'}
-  ]
+    { title: 'Filmes', url: '/movies' },
+    { title: 'Personagens', url: '/characters' },
+  ];
 
   constructor(private store: Store, private router: Router) {
     this.setCurrentRouteSubscription();
@@ -26,7 +26,7 @@ export class DashboardComponent {
   setCurrentRouteSubscription() {
     this.routeSubscription = this.router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
-      .subscribe(({ url }: NavigationEnd) => {        
+      .subscribe(({ url }: NavigationEnd) => {
         this.currentRoute = url;
       });
   }

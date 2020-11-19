@@ -1,6 +1,6 @@
 # Starwars
 
-Este projeto se utiliza da API pública do StarWars chamada SWAPI, e nele consiste uma lista de filmes retornados pela API, com as funções de login simbólico para rastreabilidade de dados, marcar o filme como visto, sumulação de como adicionar/editar/excluir filmes, lista de espécies, personagens e naves espaciais.
+Este projeto se utiliza da API pública do star wars chamada SWAPI, e nela consiste uma lista de filmes retornados pela API, com as funções de login simbólico para rastreabilidade de dados, marcar o filme como visto, sumulação de como adicionar/editar/excluir filmes, lista de espécies, personagens e naves espaciais.
 
 ## Instalação
 

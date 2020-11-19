@@ -124,11 +124,10 @@ describe("Movies", function () {
   });
 
   it("should open and close details modal", () => {
-    cy.get("[aria-label='Detalhes do filme']").click();
+    cy.wait(["@getMovie"]);
+    cy.get("[aria-label='Detalhes do filme']").first().click();
     cy.get("mat-dialog-container").should("be.visible");
     cy.get("[aria-label='Fechar modal de detalhes']").click();
     cy.get("mat-dialog-container").should("not.exist");
-    cy.get(".mat-drawer-backdrop").click();
-    cy.get("[aria-label='Ver planeta']").click();
   });
 });

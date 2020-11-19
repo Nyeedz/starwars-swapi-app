@@ -1,12 +1,11 @@
 import {
-  Component,
-  Output,
-  EventEmitter,
-  ViewChild,
   AfterViewInit,
-  ElementRef
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
 } from '@angular/core';
-import { Movie } from '@models';
 
 @Component({
   selector: 'sword-burger',
@@ -33,7 +32,8 @@ export class SwordBurgerComponent implements AfterViewInit {
   @ViewChild('burger') burger: ElementRef;
 
   ngAfterViewInit() {
-    this.burger.nativeElement.addEventListener('click', event => this.action.emit());
-    
+    this.burger.nativeElement.addEventListener('click', (event) =>
+      this.action.emit()
+    );
   }
 }

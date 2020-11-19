@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Character, CharactersResponse } from '@models';
-import {
-  Action,
-
-  Selector,
-  State,
-  StateContext
-} from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { SwapiService } from '@services';
 import { GetCharacters } from './characters.actions';
 
@@ -24,9 +18,12 @@ export default class CharactersState {
   ) {
     const charactersResponse: CharactersResponse = await this.swapiService
       .getCharacters(page)
-      .toPromise(); 
-    
-    let characters = [...(page === 1 || table ? [] : ctx.getState().all), ...charactersResponse.results]
+      .toPromise();
+
+    let characters = [
+      ...(page === 1 || table ? [] : ctx.getState().all),
+      ...charactersResponse.results,
+    ];
 
     return ctx.patchState({ all: characters, count: charactersResponse.count });
   }

@@ -18,14 +18,14 @@ $handle-gap: 2.5px;
           box-shadow: #f00 0px 0px 10px 1px;
         }
       }
-  
+
       &:nth-child(2) {
         .light {
           background: #efe;
           box-shadow: #0f0 0px 0px 10px 1px;
         }
       }
-  
+
       &:nth-child(3) {
         .light {
           background-color: #dff;
@@ -42,24 +42,24 @@ $handle-gap: 2.5px;
     &:nth-child(odd) {
       .handle {
         margin-right: $handle-gap;
-        border-radius:10px 0px 0px 10px;
+        border-radius: 10px 0px 0px 10px;
         border-right: 2px solid grey;
       }
 
       .light {
-        border-radius:0px 10px 10px 0px;
+        border-radius: 0px 10px 10px 0px;
       }
     }
 
     &:nth-child(even) {
       .handle {
         margin-left: $handle-gap;
-        border-radius:0px 10px 10px 0px;
+        border-radius: 0px 10px 10px 0px;
         border-left: 2px solid grey;
       }
 
       .light {
-        border-radius:10px 0px 0px 10px;
+        border-radius: 10px 0px 0px 10px;
       }
     }
 
@@ -70,13 +70,13 @@ $handle-gap: 2.5px;
 
     .light {
       width: calc(100% - #{$handle-gap});
-      transition: background 0.2s ease, box-shadow 0.2s ease;      
+      transition: background 0.2s ease, box-shadow 0.2s ease;
       background: white;
     }
 
     .handle {
       width: 20%;
-      
+
       background: rgb(185, 185, 185);
     }
   }

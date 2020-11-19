@@ -8,7 +8,7 @@ export class UnknownToQuestionMarkPipe implements PipeTransform {
     if (input === 'unknown') {
       return '?';
     } else {
-      return input
+      return input;
     }
   }
 }

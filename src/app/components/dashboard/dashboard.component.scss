@@ -46,7 +46,8 @@
       color: white;
     }
 
-    &.active, &:hover {
+    &.active,
+    &:hover {
       color: yellow;
     }
 
@@ -62,7 +63,7 @@
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;  
+  margin-left: auto;
   padding-top: 15px;
 
   @media (min-width: 576px) {

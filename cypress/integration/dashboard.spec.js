@@ -21,4 +21,12 @@ describe("Dashboard", () => {
     cy.get(".sidenav-actions li").eq(1).click();
     cy.url().should("include", "characters");
   });
+
+  it("should logout and navigato to login", () => {
+    cy.get(".burger").click();
+    cy.get("mat-sidenav").should("have.class", "mat-drawer-opened");
+    cy.get(".sidenav-actions li").first().should("be.visible");
+    cy.get(".sidenav-actions li").eq(2).click();
+    cy.url().should("include", "login");
+  })
 });

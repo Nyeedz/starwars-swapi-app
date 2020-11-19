@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { AuthState } from './auth.state';
 import { Login, Logout } from './auth.actions';
+import { AuthState } from './auth.state';
 
 describe('AuthState', () => {
   let store: Store;
