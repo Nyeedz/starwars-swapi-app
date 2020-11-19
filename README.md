@@ -33,5 +33,14 @@ ng build
 
 ## Test
 
-Execute o comando `ng test` para executar os testes unitários
-Execute o comando `npx cypress open` para executar os testes e2e
+Execute o comando
+
+```bash
+ng test
+```
+
+para executar os testes unitários
+
+```bash
+npx cypress open
+```
